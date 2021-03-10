@@ -44,9 +44,9 @@ const ContainerCard = styled.div`
   border-radius: 5px;
   justify-content: center;
 
-  &:hover {
+  /* &:hover {
     transform: scale(1.1);
-  }
+  } */
 `
 const NamePokemon = styled.h2`
   margin: 10px 0px 0px 0px;
