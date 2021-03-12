@@ -34,6 +34,7 @@ const typesBackground = {
 }
 
 const ContainerCard = styled.div`
+  position: relative;
   width: 200px;
   height: 240px;
   display: flex;
@@ -44,9 +45,9 @@ const ContainerCard = styled.div`
   border-radius: 5px;
   justify-content: center;
 
-  /* &:hover {
+  &:hover {
     transform: scale(1.1);
-  } */
+  }
 `
 const NamePokemon = styled.h2`
   margin: 10px 0px 0px 0px;
@@ -54,11 +55,19 @@ const NamePokemon = styled.h2`
 const TypePokemon = styled.h4`
   margin: 0px;
 `
+const IdPokemon = styled.p`
+  position: absolute;
+  right: 15px;
+  top: 5px;
+`
 
-const Card = ({ name, typepokemon, url, alt, type }) => {
+const Card = ({ name, typepokemon, url, alt, type, id }) => {
   return (
     <ContainerCard type={type} >
       <img style={{display: 'block', maxWidth: '40%'}} src={url} alt={alt} />
+      <IdPokemon>
+        { `##${id}` }
+      </IdPokemon>
       <NamePokemon>
         {name}
       </NamePokemon>
