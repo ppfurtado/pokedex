@@ -1,37 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-const typesBackground = {
-  steel : '#f4f4f4',
-  
-  fire : '#FDDFDF',
-  
-  grass : '#DEFDE0',
-  
-  electric : '#FCF7DE',
-  
-  water : '#DEF3FD', 
-  ice : '#DEF3FD',  
-  ground : '#f4e7da',
-  
-  rock : '#d5d5d4',
-  
-  fairy : '#fceaff',
-  
-  poison : '#98d7a5',
-  
-  bug : '#f8d5a3',
-  
-  dragon : '#97b3e6',
-  
-  psychic : '#eaeda1',
-  
-  flying : '#F5F5F5',
-  
-  fighting : '#E6E0D4',
-  
-  normal : '#F5F5F5',
-}
+import { PokedexContext } from '../contexts/PokedexContext'
 
 const ContainerCard = styled.div`
   position: relative;
@@ -39,7 +8,7 @@ const ContainerCard = styled.div`
   height: 240px;
   display: flex;
   flex-direction: column;
-  background: ${props => typesBackground[props.type[0]]};
+  background: ${props => props.typesBackground[props.type[0]]};
   align-items: center;
   padding-top: 1rem;
   border-radius: 5px;
@@ -62,8 +31,9 @@ const IdPokemon = styled.p`
 `
 
 const Card = ({ name, typepokemon, url, alt, type, id }) => {
+  const {typesBackground} = React.useContext(PokedexContext) 
   return (
-    <ContainerCard type={type} >
+    <ContainerCard type={type} typesBackground={typesBackground}>
       <img style={{display: 'block', maxWidth: '40%'}} src={url} alt={alt} />
       <IdPokemon>
         { `##${id}` }

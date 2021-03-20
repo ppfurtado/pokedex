@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import {ReactComponent as Arrow} from '../assets/left-arrow.svg'
+import { PokedexContext } from '../contexts/PokedexContext'
 
 
 const Wrapper = styled.div`
@@ -12,19 +13,27 @@ const Wrapper = styled.div`
 const ArrowLeft = styled(Arrow)`
   width: 30px; 
 `
+const Header = styled.div`
+  width: 100%;
+  height: 400px;
+  background: ${props => props.typesBackground[props.type]};
+`
 
 const Details = () => {
   
   const history = useNavigate()
 
-  const params = useParams()
-  console.log(params);
+  const {id} = useParams()
+  const {typesBackground, data} = React.useContext(PokedexContext)
 
-
+  if(data === null) return null
   return (
     <Wrapper>
       <ArrowLeft onClick={() => history(-1)} />
-      Hello Details
+      <Header typesBackground={typesBackground} type={data[id].types[0].type.name} >
+        Hello Details
+      </Header>
+      
     </Wrapper>
   )
 }

@@ -37,7 +37,7 @@ const Home = () => {
         <Wrapper>
           {
             data.map((element)=> ( 
-              <StyledLink style={{textDecoration: 'none'}} key={element.name} to={`/${element.name}`}>
+              <StyledLink style={{textDecoration: 'none'}} key={element.name} to={`/${element.id}/${element.name}`}>
                 <Card 
                   name={element.name}
                   id={element.id} 

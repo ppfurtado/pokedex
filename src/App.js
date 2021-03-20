@@ -12,7 +12,7 @@ const App = () => {
       <PokedexContextProvider>
         <Routes>
           <Route path="/"  element={<Home /> } />
-          <Route path="/:slug" element={<Details/> } />
+          <Route path="/:id/:slug" element={<Details/> } />
         </Routes>
 
       </PokedexContextProvider>
