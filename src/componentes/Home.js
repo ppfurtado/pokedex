@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Card from './Card'
+import {PokedexContext} from '../contexts/PokedexContext'
 
 const Wrapper = styled.div`
   display: grid;
@@ -26,23 +27,7 @@ const StyledLink = styled(Link)`
 `
 
 const Home = () => {
-  const [data, setData] = React.useState(null)
-  const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
-  
-  React.useEffect(()=>{
-
-    async function getData(){
-      const pokemonsPromises = []
-
-      for(let i = 1;i<= 150;i++){
-        const response = await fetch(getPokemonUrl(i))
-        const json = await response.json()
-        pokemonsPromises.push(json)
-      }
-      setData(pokemonsPromises) 
-    }
-    getData()
-  },[])
+  const {data} = React.useContext(PokedexContext)
 
   if (data === null) return null
 

@@ -8,17 +8,19 @@ const useFetch = () => {
   const request = React.useCallback(async (url)=> {
     let response
     let json
+    const pokemonsPromises = []
     try {
       setError(null)
       setLoading(true)
       response = await fetch(url)
       json = await response.json()
+      pokemonsPromises.push(json)
       if(response.ok === false) throw new Error(json.message)
     } catch (err) {
       json = null
       setError(err.message)
     } finally {
-      setData(json)
+      setData(pokemonsPromises)
       setLoading(false)
       return {response, json}
     }
