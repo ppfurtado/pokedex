@@ -43,7 +43,8 @@ const Home = () => {
                   id={element.id} 
                   typepokemon={element.types.map(typeInfo => typeInfo.type.name).join(' | ')}
                   type={element.types.map(typeInfo => typeInfo.type.name)} 
-                  alt={element.name} url={element.sprites.other.dream_world.front_default}   
+                  alt={element.name} 
+                  url={element.sprites.other.dream_world.front_default}   
                   />
                 </StyledLink>
             ))
