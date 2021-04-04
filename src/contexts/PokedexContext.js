@@ -31,7 +31,7 @@ export const PokedexContextProvider = ({ children }) => {
     async function getData(){
       const pokemonsPromises = []
 
-      for(let i = 1;i<= 150;i++){
+      for(let i = 1;i< 150;i++){
         const response = await fetch(getPokemonUrl(i))
         const json = await response.json()
         pokemonsPromises.push(json)
