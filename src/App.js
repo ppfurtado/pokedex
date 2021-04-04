@@ -6,9 +6,10 @@ import Details from './componentes/Details'
 import { PokedexContextProvider } from './contexts/PokedexContext'
 
 const POKEMONS = gql`
-  query GetPokemons {
-    pokemons {
-      results
+  {
+    pokemon {
+      name
+      url
     }
   }
 `
