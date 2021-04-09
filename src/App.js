@@ -9,7 +9,13 @@ const POKEMONS = gql`
   {
     pokemon {
       name
-      url
+      forms {
+        url
+      }
+      weight
+      species {
+        url
+      }
     }
   }
 `

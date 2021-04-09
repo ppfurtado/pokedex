@@ -5,9 +5,18 @@ const typeDefs = gql`
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
+  type Forms {
+    url: String
+  }
+  type Species {
+    url: String
+  }
+
   type Pokemon {
     name: String,
-    url: String,
+    forms: [Forms],
+    weight: Int,
+    species: Species
     
   }
 
@@ -15,31 +24,18 @@ const typeDefs = gql`
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
-    pokemon: [Pokemon]
+    pokemon: Pokemon
   }
 
 `
-
- const pokemons = async () => {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon`)
+const pokemons = async () => {
+  const data = await fetch(`https://pokeapi.co/api/v2/pokemon/1`)
   const json = await data.json()
-  console.log(json.results);
-  return json.results
+  console.log(json);
+  return json
 }
 
 const pokemon = pokemons()
-
-
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
 
 const resolvers = {
   Query: {
