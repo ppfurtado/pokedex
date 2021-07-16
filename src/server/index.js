@@ -28,14 +28,33 @@ const typeDefs = gql`
   }
 
 `
+
 const pokemons = async () => {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon/1`)
-  const json = await data.json()
-  console.log(json);
-  return json
+  const getPokemonUrl = (id) => `https://pokeapi.co/api/v2/pokemon/${id}`
+  const pokemonsPromises = []
+
+  for(let i = 1;i< 150;i++){
+    const response = await fetch(getPokemonUrl(i))
+    const json = await response.json()
+    pokemonsPromises.push(json)
+  }
+  return pokemonsPromises
 }
 
-const pokemon = pokemons()
+
+
+// const pokemons = async () => {
+  //   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/1`)
+  //   const json = await data.json()
+  //   console.log(json);
+  //   return json
+  // }
+  
+  const pokemon = pokemons()
+  pokemon.then(allPokemons => {
+    console.log("TESTE",allPokemons)
+  })
+  console.log('DEBUG',pokemon);
 
 const resolvers = {
   Query: {
