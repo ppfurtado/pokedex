@@ -100,20 +100,21 @@ const Details = () => {
               <p>Species</p>
               <p>Height</p>
               <p>Weight</p>
-              <p>Abilit</p>
+              <p>Ability</p>
             </ContentProperty>
             <ContentValue>
               <p> {data[id - 1].name} </p>
               <p> {data[id - 1].height} </p>
               <p> {data[id - 1].weight} </p>
               <p>
-                {data[id - 1].abilities.map((ability, index) => (
-                  <span key={index}> {ability.ability.name} </span>
-                ))}{" "}
+                {data[id - 1].abilities
+                  .map((ability, index) => ability.ability.name)
+                  .join(" - ")}
               </p>
             </ContentValue>
           </ContentBlock>
-          <Title>Breeding</Title>
+          {/* 
+            <Title>Breeding</Title>
           <ContentBlock>
             <ContentProperty>
               <p>Gender</p>
@@ -126,7 +127,9 @@ const Details = () => {
               <p> {data[id - 1].height} </p>
               <p> {data[id - 1].weight} </p>
             </ContentValue>
+
           </ContentBlock>
+         */}
         </Content>
       </Main>
     </Wrapper>
