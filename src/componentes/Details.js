@@ -68,10 +68,19 @@ const ContentBlock = styled.div`
 `;
 
 const Details = () => {
+  const [isActive, setIsActive] = React.useState("about");
+
   const history = useNavigate();
 
   const { id } = useParams();
   const { typesBackground, data } = React.useContext(PokedexContext);
+
+  const handleClickAbout = () => {
+    setIsActive("about");
+  };
+  const handleClickBaseStats = () => {
+    setIsActive("base stats");
+  };
 
   if (data === null) return null;
   console.log(data[id - 1]);
@@ -89,47 +98,61 @@ const Details = () => {
       </Header>
       <Main>
         <HeaderContent>
-          <p>About</p>
-          <p>Base Stats</p>
+          <p>
+            {" "}
+            <button onClick={handleClickAbout}> About </button>
+          </p>
+          <p>
+            {" "}
+            <button onClick={handleClickBaseStats}> Base Stats</button>{" "}
+          </p>
           <p>Evolution</p>
           <p>Moves</p>
         </HeaderContent>
         <Content>
-          <ContentBlock>
-            <ContentProperty>
-              <p>Species</p>
-              <p>Height</p>
-              <p>Weight</p>
-              <p>Ability</p>
-            </ContentProperty>
-            <ContentValue>
-              <p> {data[id - 1].name} </p>
-              <p> {data[id - 1].height} </p>
-              <p> {data[id - 1].weight} </p>
-              <p>
-                {data[id - 1].abilities
-                  .map((ability, index) => ability.ability.name)
-                  .join(" - ")}
-              </p>
-            </ContentValue>
-          </ContentBlock>
-          {/* 
-            <Title>Breeding</Title>
-          <ContentBlock>
-            <ContentProperty>
-              <p>Gender</p>
-              <p>Egg Groups</p>
-              <p>Egg Cycle</p>
-            </ContentProperty>
-
-            <ContentValue>
-              <p> {data[id - 1].name} </p>
-              <p> {data[id - 1].height} </p>
-              <p> {data[id - 1].weight} </p>
-            </ContentValue>
-
-          </ContentBlock>
-         */}
+          {isActive === "about" && (
+            <ContentBlock>
+              <ContentProperty>
+                <p>Species</p>
+                <p>Height</p>
+                <p>Weight</p>
+                <p>Ability</p>
+              </ContentProperty>
+              <ContentValue>
+                <p> {data[id - 1].name} </p>
+                <p> {data[id - 1].height} </p>
+                <p> {data[id - 1].weight} </p>
+                <p>
+                  {data[id - 1].abilities
+                    .map((ability, index) => ability.ability.name)
+                    .join(" - ")}
+                </p>
+              </ContentValue>
+            </ContentBlock>
+          )}
+          {isActive === "base stats" && (
+            <ContentBlock>
+              <ContentProperty>
+                <p>HP</p>
+                <p>Attack</p>
+                <p>Defense</p>
+                <p>Sp. Atk</p>
+                <p>Sp. Def</p>
+                <p>Speed</p>
+                <p>Total</p>
+              </ContentProperty>
+              <ContentValue>
+                {data[id - 1].stats.map((stat, index) => (
+                  <>
+                    <p key={index}>{stat.base_stat}</p>
+                  </>
+                ))}
+                {data[id - 1].stats
+                  .map((stat) => stat.base_stat)
+                  .reduce((acc, cur) => acc + cur)}
+              </ContentValue>
+            </ContentBlock>
+          )}
         </Content>
       </Main>
     </Wrapper>
