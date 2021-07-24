@@ -5,7 +5,7 @@ Este projeto teve como objetivo os estudos em Reactjs. Foi desenvolvida uma apli
 ## 🚀Começando
 
 Faça um clone deste repositório para sua máquina com `git clone https://github.com/ppfurtado/pokedex.git`
-Entre na pasta blog-apiki `cd pokedex`
+Entre na pasta podekex `cd pokedex`
 
 ### 📋 Pré-requisitos
 De que coisas você precisa para instalar o software e como instalá-lo?
@@ -20,11 +20,12 @@ Instalando as dependendias do projeto:
 npm install ou yarn
 ```
 Iniciando o servidor local:
-```
+
 `npm start` ou `yarn start`
 
-## 📦 🛠️ Construído com
-* [React](https://pt-br.reactjs.org/)
+### 📦 🛠️ Construído com
+
+* [React](https://pt-br.reactjs.org)
 * [React Router](https://github.com/ReactTraining/react-router/releases)
 * [Styled Components](https://styled-components.com/)
 * [VS Code](https://code.visualstudio.com/)
@@ -34,8 +35,8 @@ Iniciando o servidor local:
 
 ## ✒️ Autor
 Pedro Paulo Furtado 
-[Linkedin](https://www.linkedin.com/in/pedro-paulo-furtado-engcomp/)
-[GitHub](https://github.com/ppfurtado)
+* [Linkedin](https://www.linkedin.com/in/pedro-paulo-furtado-engcomp/)
+* [GitHub](https://github.com/ppfurtado)
 
 
 
